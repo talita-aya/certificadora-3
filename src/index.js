@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 import './index.css'
 
+import Home from './Screens/Home/Home';
 import Login from './Screens/Login/Login';
 import SaibaMais from './Screens/SaibaMais/SaibaMais';
 
