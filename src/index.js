@@ -8,6 +8,7 @@ import './index.css'
 
 import Home from './Screens/Home/Home';
 import Login from './Screens/Login/Login';
+import MinicursosOficinas from './Screens/MinicursosOficinas'
 import SaibaMais from './Screens/SaibaMais/SaibaMais';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,0 +1,251 @@
+.minicursos-oficinas-container {
+    height: 100%;
+    background: linear-gradient(0.80turn,#772AAE, #E3B732);
+    padding-bottom: 12px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 80px;
+    padding: 30px 0;
+}
+
+.header h1 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .4rem;
+    font-size: 2.0vw;
+}
+
+.content {
+    background-color: #E6E6E6;
+    margin: 0 12px 0;
+    border-radius: 48px;
+    padding: 24px 60px 24px 60px;
+}
+
+.content-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 22px 0;
+}
+
+.content-text p{
+    font-weight: 100;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 70px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 20px;
+    margin-bottom: 36px;
+}
+
+figure {
+    border-radius: 20px 20px 0 0;
+    margin: 0;
+    padding: 0;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+figure img {
+    display: block;
+    width: 100%;
+    height: 18rem;
+    object-fit: cover;
+  }
+
+.card-content {
+    padding: 0 30px 20px;
+}
+
+.card-title {
+    font-size: 1.0vw;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.card-text {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.card-text span {
+    text-transform: uppercase;
+    text-align: center;
+    padding: 5px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #772AAE;
+    background-color: #E3B732;
+    border-radius: 12px;
+}
+
+.add-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 22px 0;
+}
+
+.add-item Button span {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    font-size: 14px;
+    padding: 8px 16px;
+    text-align: center;
+}
+
+.add-item Button img {
+    width: 14px;
+    height: 14px;
+    margin-left: 8px;
+}
+
+/* Responsividade */
+
+@media (min-width: 1201px) {
+    .card-text p {
+        font-size: 1.0vw;
+    }
+
+    .card-text span {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1101px) and (max-width: 1200px) {
+    .card-title {
+        font-size: 12px;
+    }
+
+    .card-text p {
+        font-size: 14px;
+    }
+
+    .card-text span {
+        font-size: 9px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-title {
+        font-size: 14px;
+    }
+
+    .card-text p {
+        font-size: 14px;
+    }
+
+    .card-text span {
+        font-size: 9.5px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .header {
+        margin: 0 20px;
+    }
+    
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    figure {
+        aspect-ratio: 0;
+    }
+
+    .card-title {
+        font-size: 18px;
+    }
+
+    .card-text p {
+        font-size: 16px;
+    }
+
+    .card-text span {
+        font-size: 12px;
+    }
+
+    .add-item {
+        flex-direction: column;
+    }
+
+    .add-item p {
+        text-align: center;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .header {
+        flex-direction: column-reverse;
+        margin: 0 20px;
+    }
+
+    .header h1 {
+        font-size: 14px;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .header img {
+        order: 2;
+    }
+    .header Button {
+        order: 3;
+        align-self: flex-end;
+        font-size: 10px;
+    }
+    
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    figure {
+        aspect-ratio: 0;
+    }
+
+    figure img {
+        height: auto;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .card-text p {
+        font-size: 12px;
+    }
+
+    .card-text span {
+        font-size: 2.0vw;
+        padding: 5px 10px;
+    }
+
+    .add-item {
+        flex-direction: column;
+    }
+
+    .add-item p {
+        text-align: center;
+    }
+}
