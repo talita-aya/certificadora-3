@@ -1,0 +1,43 @@
+.add-container {
+    background: linear-gradient(0.80turn,#772AAE, #E3B732);
+    padding: 3%;
+}
+
+.forms-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    border-radius: 48px;
+    background: rgba(230, 230, 230, 0.3);
+    padding: 3%;
+    gap: 10%;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-family: 'Ubuntu';
+    font-size: 40px;
+    font-weight: 700;
+    width: 100%;
+    margin: 0;
+}
+
+.campos-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.inputs-container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}

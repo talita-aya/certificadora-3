@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, styled } from "@mui/material";
+import { Button } from "@mui/material";
 import { CalendarMonth, ScheduleOutlined, LocationOnOutlined, DesktopWindowsOutlined, WorkspacePremiumOutlined } from "@mui/icons-material";
 
 import "./SaibaMais.css";
