@@ -11,8 +11,15 @@ function CourseCard({ course }) {
     const navigate = useNavigate();
     const { isOpen, name, image, spots } = course;
 
+    const handleClick = () => {
+        if (isOpen) {
+            navigate("/saiba-mais"); 
+        }
+    };
+
+
     return (
-        <div className={`card ${!isOpen ? 'disabled' : ''}`} onClick={() => navigate("/saiba-mais")}>
+        <div className={`card ${!isOpen ? 'disabled' : ''}`} onClick={handleClick}>
             <figure>
                 <img src={image} alt={name} />
             </figure>
