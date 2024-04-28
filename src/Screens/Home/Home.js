@@ -5,12 +5,14 @@ import img2 from '../../Assets/img2.png';
 import img3 from '../../Assets/img3.png';
 import logo from '../../Assets/logo.png';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 function CourseCard({ course }) {
+    const navigate = useNavigate();
     const { isOpen, name, image, spots } = course;
 
     return (
-        <div className={`card ${!isOpen ? 'disabled' : ''}`}>
+        <div className={`card ${!isOpen ? 'disabled' : ''}`} onClick={() => navigate("/saiba-mais")}>
             <figure>
                 <img src={image} alt={name} />
             </figure>
@@ -20,7 +22,7 @@ function CourseCard({ course }) {
                     <p>{spots} vagas</p>
                 </div>
                 <Button
-                onClick={() => console.log("Botão inscrever")}
+                onClick={() => console.log("botão inscrever")}
                 sx={{ 
                     color: '#B1756D',
                     borderColor: '#B1756D',
@@ -50,6 +52,7 @@ function CourseCard({ course }) {
 }
 
 const HomeTest = () => {
+    const navigate = useNavigate();
     
     const courses = [
         { id: 1, name: "HTML e CSS", isOpen: true, image: img1, spots: 25 },
@@ -69,7 +72,7 @@ const HomeTest = () => {
                 <img src={logo} alt='Logo' width={100}></img>
                 <h1>Minicursos e Oficinas</h1>
                 <Button
-                onClick={() => console.log("Botão administrador")}
+                onClick={() => navigate("/login")}
                 sx={{
                     borderRadius: '20px',
                     background: 'transparent',
