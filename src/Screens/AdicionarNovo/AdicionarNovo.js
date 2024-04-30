@@ -4,34 +4,57 @@ import {
   Button,
   Select,
   MenuItem,
-  styled,
+  createTheme,
+  ThemeProvider
 } from '@mui/material';
 import './AdicionarNovo.css'
 
-const TextFieldStyled = styled(TextField)`
-    & label {
-      color: #FFFFFF;
-      font-family: 'Ubuntu';
-    }
-  
-    & label.Mui-focused {
-      color: #FFFFFF;
-    }
-  
-    & .MuiOutlinedInput-root {
-      color: #FFFFFF;
-      & fieldset {
-        border-color: #FFFFFF;
-        border-radius: 10px;
-      }
-      &:hover fieldset {
-        border-color: #FFFFFF;
-      }
-      &.Mui-focused fieldset {
-        border-color: #FFFFFF;
-      }
-    }
-  `;
+  const theme = createTheme({
+    components: {
+      MuiMenuItem: {
+        styleOverrides: {
+          root: {
+            '&:first-child': {
+              backgroundColor: '#772AAE',
+              opacity: 0.8, // Opacity para o primeiro MenuItem
+              color: 'white',
+            },
+            '&:nth-child(2)': {
+              backgroundColor: '#772AAE',
+              opacity: 0.6, // Opacity para o segundo MenuItem
+              color: 'white',
+            },
+          },
+        },
+      },
+      MuiTextField: {
+        styleOverrides: {
+          root: {
+            '& label': {
+              color: '#FFFFFF',
+              fontFamily: 'Ubuntu',
+            },
+            '& label.Mui-focused': {
+              color: '#FFFFFF',
+            },
+            '& .MuiOutlinedInput-root': {
+              color: '#FFFFFF',
+              '& fieldset': {
+                borderColor: '#FFFFFF',
+                borderRadius: '10px',
+              },
+              '&:hover fieldset': {
+                borderColor: '#FFFFFF',
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: '#FFFFFF',
+              },
+            },
+          },
+        },
+      },
+    },
+  });
 
 const AdicionarNovo = () => {
 
@@ -50,18 +73,21 @@ const AdicionarNovo = () => {
   };
 
   return (
-    <div className='add-container'>
+    <ThemeProvider theme={theme}>
+        <div className='add-container'>
         <div className='forms-container'>
             <h1>NOVO MINICURSO OU OFICINA</h1>
-            <div className='campos-container'>
-                    <form onSubmit={handleSubmit} className='inputs-container'>
-                        <TextFieldStyled
+              <form onSubmit={handleSubmit} className='campos-container'>
+                <div className='inputs-container left'>
+                      <TextField
+                            fullWidth
                             label="Nome"
                             value={name}
                             onChange={(event) => setName(event.target.value)}
                             variant='outlined'
                         />
-                        <TextFieldStyled
+                        <TextField
+                            fullWidth
                             multiline
                             rows={10}
                             label="Descrição"
@@ -70,43 +96,65 @@ const AdicionarNovo = () => {
                             variant='outlined'
                         />
 
-                        <Button type="submit">
-                            Cadastrar
+                        <Button type="submit"
+                          sx={[
+                            { 
+                            borderRadius: '50px',
+                            width: '35%',
+                            height: '50px',
+                            fontFamily: 'Ubuntu', 
+                            fontSize: '16px',
+                            fontWeight: 'normal',
+                            textTransform: 'none',
+                            backgroundColor: '#772AAE',
+                            color: '#fff',
+                
+                            ":hover": {
+                              backgroundColor: "#97538B",
+                            }
+                            }
+                          ]}
+                        >
+                            Enviar
                         </Button>
-                    </form>
-                    <form className='inputs-container'>
-                        <TextFieldStyled
+                </div>
+                <div className='inputs-container right'>
+                        <TextField
+                            fullWidth
                             label="Data"
                             value={date}
                             variant='outlined'
                             onChange={(event) => setDate(event.target.value)}
                         />
-                        <TextFieldStyled
+                        <TextField
+                            fullWidth
                             label="Horário"
                             value={time}
                             variant='outlined'
                             onChange={(event) => setTime(event.target.value)}
                         />
-                        <TextFieldStyled
+                        <TextField
+                            fullWidth
                             label="Duração"
                             value={duration}
                             variant='outlined'
                             onChange={(event) => setDuration(event.target.value)}
                         />
-                        <TextFieldStyled
+                        <TextField
+                            fullWidth
                             label="Local"
                             value={location}
                             variant='outlined'
                             onChange={(event) => setLocation(event.target.value)}
                         />
-                        <TextFieldStyled
+                        <TextField
+                            fullWidth
                             label="Quantidade de vagas"
                             value={vacancies}
                             variant='outlined'
                             onChange={(event) => setVacancies(event.target.value)}
                         />
                         <Select
-                            legend="Oiee"
                             value={certificate}
                             onChange={(event) => setCertificate(event.target.value)}
                             variant="outlined"
@@ -130,15 +178,20 @@ const AdicionarNovo = () => {
                                 },
                               }}
                         >
-                            <MenuItem value="sim">Com certificado</MenuItem>
+                            <MenuItem value="sim"
+                              
+                            >
+                              Com certificado</MenuItem>
                             <MenuItem value="nao">Sem certificado</MenuItem>
                         </Select>
                      
-                    </form>
-            </div>
+                </div>
+              </form>
             
         </div>
     </div>
+    </ThemeProvider>
+    
     
   );
 };
