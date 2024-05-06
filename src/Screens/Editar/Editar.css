@@ -1,0 +1,98 @@
+.add-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(0.80turn,#772AAE, #E3B732);
+}
+
+.forms-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 88%;
+    height: 78%;
+    border-radius: 48px;
+    background: rgba(230, 230, 230, 0.3);
+    padding: 2%;
+    gap: 6%;
+}
+
+h1 {
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.campos-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5%;
+}
+
+.inputs-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3%;
+}
+
+.left {
+    width: 60%;
+    align-items: flex-start;
+}
+
+.right {
+    width: 25%;
+}
+
+.container-botoes{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.centered-div{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.50);
+}
+
+.modal-div{
+    background-color: white;
+    display: flex;
+    width: 40%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 0;
+    border-radius: 24px;
+    gap: 30px;
+}
+
+.modal-atencao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.modal-botoes {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
