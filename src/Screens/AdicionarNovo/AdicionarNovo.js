@@ -9,6 +9,8 @@ import {
 } from '@mui/material';
 import './AdicionarNovo.css'
 
+import { useNavigate } from 'react-router-dom';
+
 
   const theme = createTheme({
     components: {
@@ -85,6 +87,7 @@ import './AdicionarNovo.css'
   });
 
 const AdicionarNovo = () => {
+  const navigate = useNavigate();
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -96,7 +99,8 @@ const AdicionarNovo = () => {
   const [certificate, setCertificate] = useState('sim');
 
   const handleNovo = () => {
-    console.log("Adicionado");
+    navigate('/minicursos-oficinas')
+    alert('Item adicionado')
   };
 
   return (
