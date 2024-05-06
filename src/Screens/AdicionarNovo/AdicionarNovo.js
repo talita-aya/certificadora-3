@@ -9,20 +9,25 @@ import {
 } from '@mui/material';
 import './AdicionarNovo.css'
 
+
   const theme = createTheme({
     components: {
-      MuiMenuItem: {
+      MuiPaper: {
         styleOverrides: {
           root: {
-            '&:first-child': {
-              backgroundColor: '#772AAE',
-              opacity: 0.8, // Opacity para o primeiro MenuItem
-              color: 'white',
+            '& .MuiMenuItem-root': {
+              color: '#FFFFFF',
+              backgroundColor: '#772AAE !important',
+              opacity: '0.8',
+              
             },
-            '&:nth-child(2)': {
-              backgroundColor: '#772AAE',
-              opacity: 0.6, // Opacity para o segundo MenuItem
-              color: 'white',
+            '& .MuiMenuItem-root.Mui-selected': {
+              backgroundColor: '#772AAE !important',
+              opacity: '1',
+            },
+            '& .MuiList-root.MuiMenu-list': {
+                paddingTop: 0,
+                paddingBottom: 0,
             },
           },
         },
@@ -53,6 +58,29 @@ import './AdicionarNovo.css'
           },
         },
       },
+      MuiSelect: {
+        styleOverrides: {
+          root: {
+            '& .MuiSelect-icon': {
+              color: '#FFFFFF',
+            },
+            '& .MuiSelect-outlined': {
+                color: '#FFFFFF',
+                fontFamily: 'Ubuntu',
+            },
+            '& fieldset': {
+                borderColor: '#FFFFFF',
+                borderRadius: '10px',
+            },
+            '&:hover fieldset': {
+                borderColor: '#FFFFFF !important', // Altera a cor da borda do fieldset no hover
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: '#FFFFFF !important',
+            },
+          },
+        },
+      },
     },
   });
 
@@ -67,9 +95,8 @@ const AdicionarNovo = () => {
   const [vacancies, setVacancies] = useState('');
   const [certificate, setCertificate] = useState('sim');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle form submission here
+  const handleNovo = () => {
+    console.log("Adicionado");
   };
 
   return (
@@ -77,7 +104,7 @@ const AdicionarNovo = () => {
         <div className='add-container'>
         <div className='forms-container'>
             <h1>NOVO MINICURSO OU OFICINA</h1>
-              <form onSubmit={handleSubmit} className='campos-container'>
+              <form onSubmit={handleNovo} className='campos-container'>
                 <div className='inputs-container left'>
                       <TextField
                             fullWidth
@@ -159,29 +186,10 @@ const AdicionarNovo = () => {
                             onChange={(event) => setCertificate(event.target.value)}
                             variant="outlined"
                             sx={{
-                                '& .MuiSelect-icon': {
-                                    color: '#FFFFFF',
-                                },
-                                '& .MuiSelect-outlined': {
-                                    color: '#FFFFFF',
-                                    fontFamily: 'Ubuntu',
-                                },
-                                '& fieldset': {
-                                    borderColor: '#FFFFFF',
-                                    borderRadius: '10px',
-                                },
-                                '&:hover fieldset': {
-                                    borderColor: '#FFFFFF !important', // Altera a cor da borda do fieldset no hover
-                                },
-                                '&.Mui-focused fieldset': {
-                                    borderColor: '#FFFFFF !important',
-                                },
+                                
                               }}
                         >
-                            <MenuItem value="sim"
-                              
-                            >
-                              Com certificado</MenuItem>
+                            <MenuItem value="sim">Com certificado</MenuItem>
                             <MenuItem value="nao">Sem certificado</MenuItem>
                         </Select>
                      
