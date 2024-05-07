@@ -43,14 +43,14 @@ const Login = () => {
         <Input
           fullWidth
           id="outlined-basic"
-          label="Nome"
+          label="E-mail"
           variant="outlined"
           margin="normal"
         />
         <Input
           fullWidth
           id="outlined-basic"
-          label="E-mail"
+          label="Senha"
           variant="outlined"
           margin="normal"
         />
