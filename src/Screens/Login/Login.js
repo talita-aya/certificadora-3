@@ -1,5 +1,7 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Button, TextField, styled} from "@mui/material"; 
+
 
 import "./Login.css";
 import LoginImg from '../../Assets/login-img.svg'
@@ -29,6 +31,7 @@ const Input = styled(TextField)`
   }
 `
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <div className="login-container">
       <h1>BEM - VINDAS!</h1>
@@ -52,7 +55,7 @@ const Login = () => {
           margin="normal"
         />
         <Button 
-          onClick={() => console.log('Botão login')}
+          onClick={() => navigate("/minicursos-oficinas")}
           variant="contained" 
           sx={[
             { 
