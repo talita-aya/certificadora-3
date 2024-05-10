@@ -7,8 +7,11 @@ import logo from '../../Assets/logo.png';
 import plus from '../../Assets/plus.png';
 import { Button } from '@mui/material';
 
+import { useNavigate } from 'react-router-dom';
+
 function ItemsCard({ item }) {
     const { isOpen, name, image, spots } = item;
+    const navigate = useNavigate();
 
     return (
         <div className="card">
@@ -27,7 +30,7 @@ function ItemsCard({ item }) {
                     </span>
                 </div>
                 <Button
-                onClick={() => console.log("Botão editar")}
+                onClick={() => navigate("/editar")}
                 sx={{ 
                     color: '#B1756D',
                     borderColor: '#B1756D',
@@ -55,6 +58,7 @@ function ItemsCard({ item }) {
 }
 
 const MinicursosOficinas = () => {
+    const navigate = useNavigate();
     
     const items = [
         { id: 1, name: "HTML e CSS", isOpen: true, image: img1, spots: 25 },
@@ -68,13 +72,15 @@ const MinicursosOficinas = () => {
         { id: 3, name: "Gerenciamento de Projetos", isOpen: true, image: img3, spots: 20 }  
     ];
 
+    
+
     return (
         <div className='minicursos-oficinas-container'>
             <div className='header'>
                 <img src={logo} alt='Logo' width={100}></img>
                 <h1>Minicursos e Oficinas</h1>
                 <Button
-                onClick={() => console.log("Botão sair")}
+                onClick={() => navigate("/")}
                 sx={{
                     borderRadius: '20px',
                     background: 'transparent',
@@ -102,7 +108,7 @@ const MinicursosOficinas = () => {
                 <div className='add-item'>
                     <p className='content-text'>Sinta-se livre para editar os minicursos e oficinas de acordo com sua vontade!</p>
                     <Button
-                    onClick={() => console.log("Botão adicionar")}
+                    onClick={() => navigate("/adicionar")}
                     sx={{
                         display: 'flex',
                         alignItems: 'center',
