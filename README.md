@@ -22,21 +22,21 @@ Este projeto será composto pelo desenvolvimento de um sistema web com o objetiv
 
 <b>❗ O back-end do projeto ainda não foi implementado, visto que esta entrega seria a finalização completa do front-end, deste modo, nenhuma informação está sendo salva no sistema atual, não é necessário credeciais para realizar login (basta clicar no botão 'Entrar') e não há nenhuma conexão, até então, com o banco de dados que será utilizado ❗</b> 
 
-1. Apresentação Geral de todos os minicursos e oficinas planejados, de modo que toda a comunidade interessada possa ter acesso;
+1. Apresentação geral de todos os cards de minicursos e oficinas planejados, de modo que toda a comunidade interessada possa ter acesso;
 
-      > O público poderá se inscrever no minicurso/oficina que desejar através de um formulário externo ao clicar no botão 'Inscrever-se' (por enquanto este botão não possui nada linkado a ele);
+      > O público poderá se inscrever no minicurso/oficina que desejar através de um formulário externo ao clicar no botão 'Inscrever-se' (por enquanto este botão não possui nada linkado a ele).
 
-2. Tela com detalhes do minicurso/oficina selecionado: descrição, data, hora, local, duração e certificação;
+2. Tela Saiba Mais com detalhes do minicurso/oficina selecionado: descrição, data, hora, local, duração e certificação;
 
-    > Tela Saiba Mais acessada ao clicar no card de algum minicurso/oficina da Tela Home
+    > Essa tela pode ser acessada ao clicar no card de algum minicurso/oficina da Tela Home.
 
-3. Área privada dos admnistradores (integrantes do projeto Meninas Digitais) que só poderá ser acessada com o e-mail e senha cadastrados;
+3. Área privada dos administradores (integrantes do projeto Meninas Digitais) que só poderá ser acessada com o e-mail e senha cadastrado;
     
-    > Login restritivo para que a comunidade externa não tenha acesso
+    > Ao clicar no botão ‘Administrador’, o usuário será redirecionado a Tela de Login, esta que restringe o restante do sistema para que a comunidade externa não tenha acesso.
 
-4. Tela privada com a apresentação geral e opções para o administrador cadastrar, visualizar, editar e excluir um minicurso/oficina;
+4. Tela com a apresentação geral e opções para o administrador cadastrar, visualizar, editar e excluir um minicurso/oficina;
 
-    > Acessível se, e somente se, o usuário conseguir realizar o login para a área privada dos administradores
+    > Acessível se, e somente se, o usuário conseguir realizar o login para a área privada dos administradores.
 
 <br>
 
