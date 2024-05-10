@@ -20,7 +20,7 @@ Este projeto será composto pelo desenvolvimento de um sistema web com o objetiv
 
 ## 📑 Funcionalidades
 
-<b>❗ O back-end do projeto ainda não foi implementado, visto que esta entrega seria a finalização completa do front-end, deste modo, nenhuma informação está sendo salva no sistema atual, não é necessário credeciais para realizar login (basta clicar no botão 'Entrar') e não há nenhuma conexão, até então, com o banco de dados que será utilizado ❗</b> 
+<b>❗ O back-end do projeto ainda não foi implementado, visto que esta entrega seria a finalização completa do front-end, deste modo, nenhuma informação está sendo salva no sistema atual, não é necessário credenciais para realizar login (basta clicar no botão 'Entrar') e não há nenhuma conexão, até então, com o banco de dados que será utilizado ❗</b> 
 
 1. Apresentação geral de todos os cards de minicursos e oficinas planejados, de modo que toda a comunidade interessada possa ter acesso;
 
