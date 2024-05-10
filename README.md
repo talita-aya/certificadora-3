@@ -6,8 +6,6 @@
 
 Este projeto será composto pelo desenvolvimento de um sistema web com o objetivo de simplificar o agendamento e controle de minicursos e oficinas ofertados pelo projeto Meninas Digitais.
 
-<b>❗ Para o login não é necessário inserir nenhum dado nos campos disponíveis, basta clicar no botão 'Entrar' ❗</b> 
-
 <br>
 
 ## 👨‍💻 Equipe (grupo 2)
@@ -21,6 +19,8 @@ Este projeto será composto pelo desenvolvimento de um sistema web com o objetiv
 <br>
 
 ## 📑 Funcionalidades
+
+<b>❗ O back-end do projeto ainda não foi implementado, visto que esta entrega seria a finalização completa do front-end, deste modo, nenhuma informação está sendo salva no sistema atual, não é necessário credeciais para realizar login (basta clicar no botão 'Entrar') e não há nenhuma conexão, até então, com o banco de dados que será utilizado ❗</b> 
 
 1. Apresentação Geral de todos os minicursos e oficinas planejados, de modo que toda a comunidade interessada possa ter acesso;
 
