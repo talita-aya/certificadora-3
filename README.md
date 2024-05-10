@@ -24,19 +24,27 @@ Este projeto será composto pelo desenvolvimento de um sistema web com o objetiv
 
 1. Apresentação Geral de todos os minicursos e oficinas planejados, de modo que toda a comunidade interessada possa ter acesso;
 
-2. Tela Saiba Mais com detalhes do minicurso/oficina selecionado: descrição, data, hora, local, duração e certificação;
+    1.1. Tela Home contendo um card para cada minicurso/oficina, botão para se inscrever (este botão não possui nada linkado por enquanto) e botão para administrador
 
-    > Tela acessada ao clicar no card de algum minicurso/oficina da Tela de Apresentação Geral
+      > O público poderá se inscrever no minicurso/oficina que desejar através de um formulário externo;
 
-3. O público poderá se inscrever no minicurso/oficina que desejar através de um formulário externo, cujo link sera disponibilizado no sistema proposto através de um botão claro e objetivo que indica a ação citada;
+<br>
 
-4. Área privada dos admnistradores (integrantes do projeto Meninas Digitais) que só poderá ser acessada com o e-mail e senha cadastrados;
+2. Tela com detalhes do minicurso/oficina selecionado: descrição, data, hora, local, duração e certificação;
+
+    > Tela Saiba Mais acessada ao clicar no card de algum minicurso/oficina da Tela Home
+
+<br>
+
+3. Área privada dos admnistradores (integrantes do projeto Meninas Digitais) que só poderá ser acessada com o e-mail e senha cadastrados;
     
     > Login restritivo para que a comunidade externa não tenha acesso
 
+<br>
+
 5. Tela privada com a apresentação geral e opções para o administrador cadastrar, visualizar, editar e excluir um minicurso/oficina;
 
-    > Acessível se, e somente, o usuário conseguir realizar o login para a área privada dos administradores
+    > Acessível se, e somente se, o usuário conseguir realizar o login para a área privada dos administradores
 
 <br> 
 
@@ -99,7 +107,7 @@ npm install
 4. Executar o projeto
 
 ```
-npm start start
+npm start
 ```
 
 
