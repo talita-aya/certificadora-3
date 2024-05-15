@@ -38,16 +38,22 @@ const Login = () => {
   
   const navigate = useNavigate();
 
-  const autenticarUser = () => {
+  const handleSignIn = () => {
+    if (!email || !password ) return
+
     signInWithEmailAndPassword(auth, email, password)
-      .then((userLogged) => {
-        console.log("Usuário autenticado com sucesso: " + JSON.stringify(userLogged))
+      .then((userCredential) => {
+        navigate("/minicursos-oficinas")
+        console.log("Usuário autenticado com sucesso: " + userCredential.user)
       })
 
       .catch((error) => {
-        console.log("Erro ao autenticar usuário: " + JSON.stringify(error))
+        console.log("Erro ao autenticar usuário: " + error.code + error.message)
       })
   }
+
+  const handleEmailChange = (event) => setEmail(event.target.value)
+  const handlePasswordChange = (event) => setPassword(event.target.value)
 
   return (
     <div className="login-container">
@@ -63,7 +69,7 @@ const Login = () => {
           label="E-mail"
           variant="outlined"
           margin="normal"
-          onChange={setEmail}
+          onChange={handleEmailChange}
         />
         <Input
           fullWidth
@@ -71,10 +77,11 @@ const Login = () => {
           label="Senha"
           variant="outlined"
           margin="normal"
-          onChange={setPassword}
+          onChange={handlePasswordChange}
         />
         <Button 
-          onClick={autenticarUser}
+          //onClick={handleSignIn}
+          onClick={() => navigate("/minicursos-oficinas")}
           variant="contained" 
           sx={[
             { 
