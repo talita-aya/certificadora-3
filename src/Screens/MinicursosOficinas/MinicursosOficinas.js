@@ -1,31 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './MinicursosOficinas.css';
-import img1 from '../../Assets/img1.png';
-import img2 from '../../Assets/img2.png';
-import img3 from '../../Assets/img3.png';
 import logo from '../../Assets/logo.png';
 import plus from '../../Assets/plus.png';
 import { Button } from '@mui/material';
-
 import { useNavigate } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from "../../Firebase/config";
 
-function ItemsCard({ item }) {
-    const { isOpen, name, image, spots } = item;
+const ItemsCard = ({minicurso_oficina}) => {
     const navigate = useNavigate();
+    const { titulo, imagem, vagas, aberto } = minicurso_oficina;
+    console.log(minicurso_oficina)
 
     return (
         <div className="card">
             <figure>
-                <img src={image} alt={name} />
+                <img src={imagem} alt={titulo} />
             </figure>
                 
             <div className='card-content'>
-                <p className='card-title'>{name}</p>
+                <p className='card-title'>{titulo}</p>
                 <div className='card-text'>
                     <p>
-                        {spots} vagas
+                        {vagas} vagas
                     </p>
-                    <span style={{ visibility: !isOpen ? 'visible' : 'hidden'}}>
+                    <span style={{ visibility: !aberto ? 'visible' : 'hidden'}}>
                             Inscrições Encerradas
                     </span>
                 </div>
@@ -59,20 +58,30 @@ function ItemsCard({ item }) {
 
 const MinicursosOficinas = () => {
     const navigate = useNavigate();
-    
-    const items = [
-        { id: 1, name: "HTML e CSS", isOpen: true, image: img1, spots: 25 },
-        { id: 2, name: "Estrutura de Dados", isOpen: true, image: img2, spots: 10 },
-        { id: 3, name: "Gerenciamento de Projetos", isOpen: false, image: img3, spots: 20 } ,
-        { id: 1, name: "HTML e CSS", isOpen: true, image: img1, spots: 25 },
-        { id: 2, name: "Estrutura de Dados", isOpen: false, image: img2, spots: 10 },
-        { id: 3, name: "Gerenciamento de Projetos", isOpen: false, image: img3, spots: 20 },
-        { id: 1, name: "HTML e CSS", isOpen: true, image: img1, spots: 25 },
-        { id: 2, name: "Estrutura de Dados", isOpen: true, image: img2, spots: 10 },
-        { id: 3, name: "Gerenciamento de Projetos", isOpen: true, image: img3, spots: 20 }  
-    ];
+    const [minicursosOficinas, setMinicursosOficinas] = useState([]);
 
+    useEffect(() => {
+        const fetchMinicursosOficinas = async () => {
+            try {
+                const minicursosOficinasCollection = collection(db, 'minicursos_e_oficinas');
+                const minicursosOficinasSnapshot = await getDocs(minicursosOficinasCollection);
+                
+                const minicursosOficinasData = [];
+                minicursosOficinasSnapshot.forEach(doc => {
+                    minicursosOficinasData.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
+                });
     
+                setMinicursosOficinas(minicursosOficinasData);
+            } catch (error) {
+                console.error("Erro ao buscar minicursos e oficinas:", error);
+            }
+        };
+    
+        fetchMinicursosOficinas();
+    }, []);
 
     return (
         <div className='minicursos-oficinas-container'>
@@ -135,8 +144,8 @@ const MinicursosOficinas = () => {
                 </div>                
                 
                 <div className='cards'>
-                    {items.map(item => (
-                    <ItemsCard key={item.id} item={item} />
+                    {minicursosOficinas.map(minicurso_oficina => (
+                        <ItemsCard key={minicurso_oficina.id} minicurso_oficina={minicurso_oficina} />
                     ))}
                 </div>
             </div>

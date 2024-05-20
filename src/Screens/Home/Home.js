@@ -1,32 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css';
-import img1 from '../../Assets/img1.png';
-import img2 from '../../Assets/img2.png';
-import img3 from '../../Assets/img3.png';
 import logo from '../../Assets/logo.png';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from "../../Firebase/config";
 
-function CourseCard({ course }) {
+function CourseCard({ minicurso_oficina }) {
     const navigate = useNavigate();
-    const { isOpen, name, image, spots } = course;
+    const { titulo, imagem, vagas, aberto } = minicurso_oficina;
 
     const handleClick = () => {
-        if (isOpen) {
+        if (aberto) {
             navigate("/saiba-mais"); 
         }
     };
 
-
     return (
-        <div className={`card ${!isOpen ? 'disabled' : ''}`} onClick={handleClick}>
+        <div className={`card ${!aberto ? 'disabled' : ''}`} onClick={handleClick}>
             <figure>
-                <img src={image} alt={name} />
+                <img src={imagem} alt={titulo} />
             </figure>
             <div className='card-content'>
-                <p className='card-title'>{name}</p>
+                <p className='card-title'>{titulo}</p>
                 <div className='card-text'>
-                    <p>{spots} vagas</p>
+                    <p>{vagas} vagas</p>
                 </div>
                 <Button
                 onClick={() => console.log("botão inscrever")}
@@ -49,29 +47,41 @@ function CourseCard({ course }) {
                 fullWidth
                 variant="outlined"
                 size='small'
-                disabled={!isOpen}
+                disabled={!aberto}
                 >
-                {isOpen ? 'Inscrever-se' : 'Inscrições Encerradas'}
+                {aberto ? 'Inscrever-se' : 'Inscrições Encerradas'}
                 </Button>
             </div>
         </div>
     );
 }
 
-const HomeTest = () => {
+const Home = () => {
     const navigate = useNavigate();
+    const [minicursosOficinas, setMinicursosOficinas] = useState([]);
+
+    useEffect(() => {
+        const fetchMinicursosOficinas = async () => {
+            try {
+                const minicursosOficinasCollection = collection(db, 'minicursos_e_oficinas');
+                const minicursosOficinasSnapshot = await getDocs(minicursosOficinasCollection);
+                
+                const minicursosOficinasData = [];
+                minicursosOficinasSnapshot.forEach(doc => {
+                    minicursosOficinasData.push({
+                        id: doc.id,
+                        ...doc.data()
+                    });
+                });
     
-    const courses = [
-        { id: 1, name: "HTML e CSS", isOpen: true, image: img1, spots: 25 },
-        { id: 2, name: "Estrutura de Dados", isOpen: true, image: img2, spots: 10 },
-        { id: 3, name: "Gerenciamento de Projetos", isOpen: false, image: img3, spots: 20 },
-        { id: 1, name: "HTML e CSS", isOpen: true, image: img1, spots: 25 },
-        { id: 2, name: "Estrutura de Dados", isOpen: false, image: img2, spots: 10 },
-        { id: 3, name: "Gerenciamento de Projetos", isOpen: false, image: img3, spots: 20 },
-        { id: 1, name: "HTML e CSS", isOpen: true, image: img1, spots: 25 },
-        { id: 2, name: "Estrutura de Dados", isOpen: true, image: img2, spots: 10 },
-        { id: 3, name: "Gerenciamento de Projetos", isOpen: true, image: img3, spots: 20 }  
-    ];
+                setMinicursosOficinas(minicursosOficinasData);
+            } catch (error) {
+                console.error("Erro ao buscar minicursos e oficinas:", error);
+            }
+        };
+    
+        fetchMinicursosOficinas();
+    }, []);
 
     return (
         <div className='home-container'>
@@ -110,13 +120,13 @@ const HomeTest = () => {
                 
             
                 <div className='cards'>
-                    {courses.map(course => (
-                    <CourseCard key={course.id} course={course} />
-                    ))}
+                    {minicursosOficinas?.map(minicurso_oficina => {
+                        return <CourseCard key={minicurso_oficina.id} minicurso_oficina={minicurso_oficina}/>
+                    })}
                 </div>
             </div>
         </div>
     );
 }
 
-export default HomeTest
+export default Home
