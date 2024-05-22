@@ -1,13 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router } from "react-router-dom";
+import App from "./App";
 
-import './index.css'
-import PublicRoutes from './Routes/PublicRoutes';
-import PrivateRoutes from './Routes/PrivateRoutes';
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <PrivateRoutes />
+    <Router>
+      <App />
+    </Router>
   </React.StrictMode>
 );

@@ -1,12 +1,17 @@
-import React, {useContext} from 'react';
-import PublicRoutes from './Routes/PublicRoutes';
-import PrivateRoutes from './Routes/PrivateRoutes';
-import { AuthContext } from './Context/AuthContext';
+import Login from "./Screens/Login/Login";
+import MinicursosOficinas from "./Screens/MinicursosOficinas/MinicursosOficinas";
+import { Routes, Route } from "react-router-dom";
+import { UserAuthContextProvider } from "./Context/AuthContext";
 
 function App() {
-  // const { auth } = useContext(AuthContext);
-  // console.log("auth", auth);
-  // return auth ? <PrivateRoutes /> : <PublicRoutes />
+  return (
+    <UserAuthContextProvider>
+      <Routes>
+        <Route path="/minicursos-oficinas" element={<MinicursosOficinas />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </UserAuthContextProvider>
+  );
 }
 
 export default App;
