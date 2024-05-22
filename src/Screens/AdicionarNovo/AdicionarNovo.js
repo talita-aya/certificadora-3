@@ -11,6 +11,9 @@ import './AdicionarNovo.css'
 
 import { useNavigate } from 'react-router-dom';
 
+import { collection, initializeFirestore, addDoc } from 'firebase/firestore';
+import {db} from '../../Firebase/config'
+
 
   const theme = createTheme({
     components: {
@@ -89,6 +92,10 @@ import { useNavigate } from 'react-router-dom';
 const AdicionarNovo = () => {
   const navigate = useNavigate();
 
+  //const db = initializeFirestore(app, {experimentalForceLongPolling: true})
+
+  const MiniCursos_e_OficinasCollection = collection(db, "minicursos_e_oficinas")
+
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
@@ -99,8 +106,25 @@ const AdicionarNovo = () => {
   const [certificate, setCertificate] = useState('sim');
 
   const handleNovo = () => {
+    const docCursos = {
+      nome: name,
+      descricao: description,
+      data: date,
+      horario: time,
+      duracao: duration,
+      local: location,
+      vagas: vacancies,
+      certificado: certificate
+    }
+
+    addDoc(MiniCursos_e_OficinasCollection, docCursos).then( (docRef) => {
+      alert("Item adicionado com sucesso")
+      
+    }).catch((erro) => {
+      console.log("erro: " + erro)
+    })
+
     navigate('/minicursos-oficinas')
-    alert('Item adicionado')
   };
 
   return (
