@@ -107,14 +107,16 @@ const AdicionarNovo = () => {
 
   const handleNovo = () => {
     const docCursos = {
-      nome: name,
+      titulo: name,
       descricao: description,
       data: date,
       horario: time,
       duracao: duration,
       local: location,
       vagas: vacancies,
-      certificado: certificate
+      certificado: certificate,
+      aberto: true,
+      imagem: 'path_to_image'
     }
 
     addDoc(MiniCursos_e_OficinasCollection, docCursos).then( (docRef) => {
