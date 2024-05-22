@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   TextField,
   Button,
@@ -9,9 +9,7 @@ import {
   Modal
 } from '@mui/material';
 import {WarningAmberOutlined } from "@mui/icons-material";
-import { useNavigate, useParams } from 'react-router-dom';
-import { updateDoc, doc, getDoc} from 'firebase/firestore';
-import {db} from '../../Firebase/config'
+import { useNavigate } from 'react-router-dom';
 
 import "./Editar.css"
 
@@ -92,7 +90,6 @@ import "./Editar.css"
 const Editar = () => {
     const navigate = useNavigate();
 
-    const {id} = useParams();
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState('');
@@ -104,43 +101,9 @@ const Editar = () => {
 
     const [modalVisible, setModalVisible] = useState(false);
 
-    useEffect(() => {
-      const fetchCursoData = async () => {
-          const cursoRef = doc(db, "minicursos_e_oficinas", id);
-          const cursoDoc = await getDoc(cursoRef);
-          if (cursoDoc.exists()) {
-              const data = cursoDoc.data();
-              setName(data.titulo || '');
-              setDescription(data.descricao || '');
-              setDate(data.data || '');
-              setTime(data.horario || '');
-              setDuration(data.duracao || '');
-              setLocation(data.local || '');
-              setVacancies(data.vagas || '');
-              setCertificate(data.certificado || 'sim');
-          } else {
-              console.log("No such document!");
-          }
-      };
-      fetchCursoData();
-  }, [id]);
-
-  const handleEditar = (id) => {
+  const handleEditar = () => {
     navigate("/minicursos-oficinas")
     alert('Editado com sucesso')
-    const cursoRef = doc(db, "minicursos_e_oficinas", id)
-
-    updateDoc(cursoRef, {
-      nome: name,
-      descricao: description,
-      data: date,
-      horario: time,
-      duracao: duration,
-      local: location,
-      vagas: vacancies,
-      certificado: certificate
-    })
-
   };
 
   const handleExcluir = () => {

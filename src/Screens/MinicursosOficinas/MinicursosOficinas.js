@@ -29,7 +29,7 @@ const ItemsCard = ({minicurso_oficina}) => {
                     </span>
                 </div>
                 <Button
-                onClick={() => navigate("/editar/${minicursos_oficina.id}")}
+                onClick={() => navigate("/editar")}
                 sx={{ 
                     color: '#B1756D',
                     borderColor: '#B1756D',
