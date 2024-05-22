@@ -17,7 +17,7 @@ const PrivateRoutes = () => {
           <Route path="/minicursos-oficinas" element={<MinicursosOficinas/>}/>
           <Route path="/saiba-mais" element={<SaibaMais/>}/>
           <Route path="/adicionar" element={<AdicionarNovo/>}/>
-          <Route path='/editar' element={<Editar/>}/>
+          <Route path='/editar/:id' element={<Editar/>}/>
         </Routes>
       </BrowserRouter>
   )
