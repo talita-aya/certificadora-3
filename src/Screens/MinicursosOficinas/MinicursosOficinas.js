@@ -8,10 +8,12 @@ import plus from '../../Assets/plus.png';
 import { Button } from '@mui/material';
 
 import { useNavigate } from 'react-router-dom';
+import { useUserAuth } from '../../Context/AuthContext';
 
 function ItemsCard({ item }) {
     const { isOpen, name, image, spots } = item;
     const navigate = useNavigate();
+    const { user } = useUserAuth()
 
     return (
         <div className="card">
