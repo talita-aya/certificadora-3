@@ -13,7 +13,6 @@ import { useUserAuth } from '../../Context/AuthContext';
 function ItemsCard({ item }) {
     const { isOpen, name, image, spots } = item;
     const navigate = useNavigate();
-    const { user } = useUserAuth()
 
     return (
         <div className="card">
@@ -61,6 +60,17 @@ function ItemsCard({ item }) {
 
 const MinicursosOficinas = () => {
     const navigate = useNavigate();
+    const { user, logOut } = useUserAuth()
+
+    const handleSignOut = async () => {
+        try {
+            await logOut()
+            navigate("/")
+
+        } catch(err) {
+            console.log(err.message)
+        }
+    }
     
     const items = [
         { id: 1, name: "HTML e CSS", isOpen: true, image: img1, spots: 25 },
@@ -82,7 +92,7 @@ const MinicursosOficinas = () => {
                 <img src={logo} alt='Logo' width={100}></img>
                 <h1>Minicursos e Oficinas</h1>
                 <Button
-                onClick={() => navigate("/")}
+                onClick={handleSignOut}
                 sx={{
                     borderRadius: '20px',
                     background: 'transparent',

@@ -71,6 +71,7 @@ const Login = () => {
           variant="outlined"
           margin="normal"
           onChange={handlePasswordChange}
+          type="password"
         />
         <Button
           onClick={handleSignIn}

@@ -7,8 +7,14 @@ const UserAuthContext = createContext()
 export function UserAuthContextProvider ({children}) {
   const [user, setUser] = useState("")
 
+  // login
   function signIn (email, password) {
     return signInWithEmailAndPassword (auth, email, password)
+  }
+
+  // sair
+  function logOut () {
+    return signOut(auth)
   }
 
   useEffect(() => {
@@ -21,7 +27,7 @@ export function UserAuthContextProvider ({children}) {
   }, [])
 
   return (
-    <UserAuthContext.Provider value={{user, signIn}}>
+    <UserAuthContext.Provider value={{user, signIn, logOut}}>
       {children}
     </UserAuthContext.Provider>
   )
