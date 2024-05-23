@@ -9,7 +9,7 @@ import {
   Modal
 } from '@mui/material';
 import {WarningAmberOutlined } from "@mui/icons-material";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import "./Editar.css"
 
@@ -89,17 +89,29 @@ import "./Editar.css"
 
 const Editar = () => {
     const navigate = useNavigate();
+    const loc = useLocation();
 
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [date, setDate] = useState('');
-    const [time, setTime] = useState('');
-    const [duration, setDuration] = useState('');
-    const [location, setLocation] = useState('');
-    const [vacancies, setVacancies] = useState('');
-    const [certificate, setCertificate] = useState('sim');
+    const {minicurso_oficina} = loc.state;
+    const [formData, setFormData] = useState({...minicurso_oficina});
+
+    // const [name, setName] = useState('');
+    // const [description, setDescription] = useState('');
+    // const [date, setDate] = useState('');
+    // const [time, setTime] = useState('');
+    // const [duration, setDuration] = useState('');
+    // const [location, setLocation] = useState('');
+    // const [vacancies, setVacancies] = useState('');
+    // const [certificate, setCertificate] = useState('sim');
 
     const [modalVisible, setModalVisible] = useState(false);
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    })
+  }
 
   const handleEditar = () => {
     navigate("/minicursos-oficinas")
@@ -115,14 +127,14 @@ const Editar = () => {
     <ThemeProvider theme={theme}>
         <div className='add-container'>
         <div className='forms-container'>
-            <h1>{name}</h1>
+            <h1>{formData.titulo}</h1>
               <form onSubmit={handleEditar} className='campos-container'>
                 <div className='inputs-container left'>
                       <TextField
                             fullWidth
                             label="Nome"
-                            value={name}
-                            onChange={(event) => setName(event.target.value)}
+                            value={formData.titulo}
+                            onChange={handleChange}
                             variant='outlined'
                             
                         />
