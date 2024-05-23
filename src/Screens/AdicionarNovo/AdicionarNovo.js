@@ -11,7 +11,7 @@ import './AdicionarNovo.css'
 
 import { useNavigate } from 'react-router-dom';
 
-import { collection, initializeFirestore, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import {db} from '../../Firebase/config'
 
 

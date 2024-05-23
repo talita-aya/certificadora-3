@@ -10,6 +10,8 @@ import {
 } from '@mui/material';
 import {WarningAmberOutlined } from "@mui/icons-material";
 import { useLocation, useNavigate } from 'react-router-dom';
+import {doc, updateDoc, deleteDoc} from 'firebase/firestore';
+import {db} from "../../Firebase/config";
 
 import "./Editar.css"
 
@@ -89,9 +91,9 @@ import "./Editar.css"
 
 const Editar = () => {
     const navigate = useNavigate();
-    const loc = useLocation();
+    const location = useLocation();
 
-    const {minicurso_oficina} = loc.state;
+    const {minicurso_oficina} = location.state;
     const [formData, setFormData] = useState({...minicurso_oficina});
 
     // const [name, setName] = useState('');
@@ -113,14 +115,37 @@ const Editar = () => {
     })
   }
 
-  const handleEditar = () => {
-    navigate("/minicursos-oficinas")
-    alert('Editado com sucesso')
+  const handleEditar = (e) => {
+    e.preventDefault();
+
+    try {
+      //referência ao documento no firestore
+      const docRef = doc(db, 'minicursos_e_oficinas', formData.id);
+
+      updateDoc(docRef, formData);
+      alert('Editado com sucesso')
+      navigate("/minicursos-oficinas")
+    }catch (error) {
+      console.error("Erro ao editar item: ", error);
+    }
+
+    
+    
   };
 
   const handleExcluir = () => {
-    navigate("/minicursos-oficinas")
-    alert('Item excluido')
+
+    try {
+      const docRef = doc(db, 'minicursos_e_oficinas', formData.id);
+      deleteDoc(docRef);
+      alert('Item excluido')
+      navigate("/minicursos-oficinas")
+    } catch (error) {
+      console.error("Erro ao excluir item: ", error);
+    }
+
+    
+    
   };
 
   return (
@@ -133,6 +158,7 @@ const Editar = () => {
                       <TextField
                             fullWidth
                             label="Nome"
+                            name='titulo'
                             value={formData.titulo}
                             onChange={handleChange}
                             variant='outlined'
@@ -143,8 +169,9 @@ const Editar = () => {
                             multiline
                             rows={10}
                             label="Descrição"
-                            value={description}
-                            onChange={(event) => setDescription(event.target.value)}
+                            name='descricao'
+                            value={formData.descricao}
+                            onChange={handleChange}
                             variant='outlined'
                         />
                         <div className='container-botoes'>
@@ -200,41 +227,47 @@ const Editar = () => {
                         <TextField
                             fullWidth
                             label="Data"
-                            value={date}
+                            name='data'
+                            value={formData.data}
                             variant='outlined'
-                            onChange={(event) => setDate(event.target.value)}
+                            onChange={handleChange}
                         />
                         <TextField
                             fullWidth
                             label="Horário"
-                            value={time}
+                            name='horario'
+                            value={formData.horario}
                             variant='outlined'
-                            onChange={(event) => setTime(event.target.value)}
+                            onChange={handleChange}
                         />
                         <TextField
                             fullWidth
                             label="Duração"
-                            value={duration}
+                            name='duracao'
+                            value={formData.duracao}
                             variant='outlined'
-                            onChange={(event) => setDuration(event.target.value)}
+                            onChange={handleChange}
                         />
                         <TextField
                             fullWidth
                             label="Local"
-                            value={location}
+                            name='local'
+                            value={formData.local}
                             variant='outlined'
-                            onChange={(event) => setLocation(event.target.value)}
+                            onChange={handleChange}
                         />
                         <TextField
                             fullWidth
                             label="Quantidade de vagas"
-                            value={vacancies}
+                            name='vagas'
+                            value={formData.vagas}
                             variant='outlined'
-                            onChange={(event) => setVacancies(event.target.value)}
+                            onChange={handleChange}
                         />
                         <Select
-                            value={certificate}
-                            onChange={(event) => setCertificate(event.target.value)}
+                            name='certificado'
+                            value={formData.certificado}
+                            onChange={handleChange}
                             variant="outlined"
                             sx={{
                                 
