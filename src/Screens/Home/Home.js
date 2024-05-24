@@ -4,11 +4,36 @@ import logo from '../../Assets/logo.png';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
+import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
 import { db } from "../../Firebase/config";
 
 function CourseCard({ minicurso_oficina }) {
     const navigate = useNavigate();
-    const { titulo, imagem, vagas, aberto } = minicurso_oficina;
+    const [ imagemUrl, setImagemUrl ] = useState([]);
+    const { titulo, vagas, aberto } = minicurso_oficina;
+
+    useEffect(() => {
+        const fetchRandomImage = async () => {
+            try {
+                const storage = getStorage();
+                const imagesRef = ref(storage, 'imagens/');
+                const result = await listAll(imagesRef);
+                const imageRefs = result.items;
+    
+                if (imageRefs.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * imageRefs.length);
+                    const randomImageRef = imageRefs[randomIndex];
+                    const url = await getDownloadURL(randomImageRef);
+                    setImagemUrl(url);
+                } 
+            } catch (error) {
+            console.error("Erro ao buscar imagens armazenadas:", error);
+          }
+        };
+    
+        fetchRandomImage();
+      }, []);
+    
 
     const handleCardClick = () => {
         if (aberto) {
@@ -19,7 +44,7 @@ function CourseCard({ minicurso_oficina }) {
     return (
         <div className={`card ${!aberto ? 'disabled' : ''}`} onClick={handleCardClick}>
             <figure>
-                <img src={imagem} alt={titulo} />
+                <img src={imagemUrl} alt={titulo} />
             </figure>
             <div className='card-content'>
                 <p className='card-title'>{titulo}</p>
@@ -120,7 +145,7 @@ const Home = () => {
                 
             
                 <div className='cards'>
-                    {minicursosOficinas?.map(minicurso_oficina => {
+                    {minicursosOficinas.map(minicurso_oficina => {
                         return <CourseCard key={minicurso_oficina.id} minicurso_oficina={minicurso_oficina}/>
                     })}
                 </div>

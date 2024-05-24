@@ -5,17 +5,40 @@ import plus from '../../Assets/plus.png';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs } from 'firebase/firestore';
+import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
 import { db } from "../../Firebase/config";
 
 const ItemsCard = ({minicurso_oficina}) => {
     const navigate = useNavigate();
-    const { titulo, imagem, vagas, aberto } = minicurso_oficina;
-    console.log(minicurso_oficina)
+    const [ imagemUrl, setImagemUrl ] = useState([]);
+    const { titulo, vagas, aberto } = minicurso_oficina;
+
+    useEffect(() => {
+        const fetchRandomImage = async () => {
+            try {
+                const storage = getStorage();
+                const imagesRef = ref(storage, 'imagens/');
+                const result = await listAll(imagesRef);
+                const imageRefs = result.items;
+    
+                if (imageRefs.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * imageRefs.length);
+                    const randomImageRef = imageRefs[randomIndex];
+                    const url = await getDownloadURL(randomImageRef);
+                    setImagemUrl(url);
+                } 
+            } catch (error) {
+            console.error("Erro ao buscar imagens armazenadas:", error);
+          }
+        };
+    
+        fetchRandomImage();
+      }, []);
 
     return (
         <div className="card">
             <figure>
-                <img src={imagem} alt={titulo} />
+                <img src={imagemUrl} alt={titulo} />
             </figure>
                 
             <div className='card-content'>
