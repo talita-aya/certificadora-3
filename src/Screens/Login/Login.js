@@ -74,8 +74,8 @@ const Login = () => {
           type="password"
         />
         <Button
-          onClick={handleSignIn}
-          //onClick={() => navigate("/minicursos-oficinas")}
+          //onClick={handleSignIn}
+          onClick={() => navigate("/minicursos-oficinas")}
           variant="contained"
           sx={[
             {
