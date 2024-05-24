@@ -1,67 +1,60 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { Button, TextField, styled} from "@mui/material"; 
-
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../../Firebase/config'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, TextField, Snackbar, Alert, styled } from "@mui/material";
+import { useUserAuth } from "../../Context/AuthContext";
 
 import "./Login.css";
-import LoginImg from '../../Assets/login-img.svg'
+import LoginImg from "../../Assets/login-img.svg";
 
 const Input = styled(TextField)`
   & label {
-    color: #E6E6E6;
-    font-family: 'Ubuntu';
+    color: #e6e6e6;
+    font-family: "Ubuntu";
   }
 
   & label.Mui-focused {
-    color: #E6E6E6;
+    color: #e6e6e6;
   }
 
   & .MuiOutlinedInput-root {
-    color: #E6E6E6;
+    color: #e6e6e6;
     & fieldset {
-      border-color: #E6E6E6;
+      border-color: #e6e6e6;
       border-radius: 10px;
     }
     &:hover fieldset {
-      border-color: #E6E6E6;
+      border-color: #e6e6e6;
     }
     &.Mui-focused fieldset {
-      border-color: #E6E6E6;
+      border-color: #e6e6e6;
     }
   }
-`
+`;
 const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { signIn } = useUserAuth();
   const navigate = useNavigate();
 
-  const handleSignIn = () => {
-    if (!email || !password ) return
+  const handleSignIn = async (event) => {
+    event.preventDefault();
+    setError("");
+    try {
+      await signIn(email, password);
+      navigate("/minicursos-oficinas");
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        navigate("/minicursos-oficinas")
-        console.log("Usuário autenticado com sucesso: " + userCredential.user)
-      })
-
-      .catch((error) => {
-        console.log("Erro ao autenticar usuário: " + error.code + error.message)
-      })
-  }
-
-  const handleEmailChange = (event) => setEmail(event.target.value)
-  const handlePasswordChange = (event) => setPassword(event.target.value)
+  const handleEmailChange = (event) => setEmail(event.target.value);
+  const handlePasswordChange = (event) => setPassword(event.target.value);
 
   return (
     <div className="login-container">
       <h1>BEM - VINDAS!</h1>
-      <img
-        src={LoginImg}
-        alt="logo do projeto Meninas Digitais"
-      />
+      <img src={LoginImg} alt="logo do projeto Meninas Digitais" />
       <div className="login-info">
         <Input
           fullWidth
@@ -78,35 +71,45 @@ const Login = () => {
           variant="outlined"
           margin="normal"
           onChange={handlePasswordChange}
+          type="password"
         />
-        <Button 
+        <Button
           //onClick={handleSignIn}
           onClick={() => navigate("/minicursos-oficinas")}
-          variant="contained" 
+          variant="contained"
           sx={[
-            { 
-            borderRadius: '50px',
-            width: '100%',
-            height: '50px',
-            margin: '25px 0',
-            fontFamily: 'Ubuntu', 
-            fontSize: '18px',
-            fontWeight: 'normal',
-            textTransform: 'none',
-            backgroundColor: '#772AAE',
-            color: '#fff',
+            {
+              borderRadius: "50px",
+              width: "100%",
+              height: "50px",
+              margin: "25px 0",
+              fontFamily: "Ubuntu",
+              fontSize: "18px",
+              fontWeight: "normal",
+              textTransform: "none",
+              backgroundColor: "#772AAE",
+              color: "#fff",
 
-            ":hover": {
-              backgroundColor: "#97538B",
-            }
-            }
+              ":hover": {
+                backgroundColor: "#97538B",
+              },
+            },
           ]}
         >
           Entrar
         </Button>
+        <Snackbar
+          open={!!error}
+          autoHideDuration={3000}
+          onClose={() => setError("")}
+        >
+          <Alert severity="error" variant="filled" sx={{ width: "100%" }}>
+            {error}
+          </Alert>
+        </Snackbar>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
