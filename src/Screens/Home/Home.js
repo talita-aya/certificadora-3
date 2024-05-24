@@ -10,14 +10,14 @@ function CourseCard({ minicurso_oficina }) {
     const navigate = useNavigate();
     const { titulo, imagem, vagas, aberto } = minicurso_oficina;
 
-    const handleClick = () => {
+    const handleCardClick = () => {
         if (aberto) {
-            navigate("/saiba-mais"); 
+            navigate("/saiba-mais", { state: { minicurso_oficina } });
         }
     };
 
     return (
-        <div className={`card ${!aberto ? 'disabled' : ''}`} onClick={handleClick}>
+        <div className={`card ${!aberto ? 'disabled' : ''}`} onClick={handleCardClick}>
             <figure>
                 <img src={imagem} alt={titulo} />
             </figure>
