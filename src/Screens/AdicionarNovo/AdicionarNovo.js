@@ -118,14 +118,13 @@ const AdicionarNovo = () => {
       inscricao: inscription,
     }
 
-    addDoc(MiniCursos_e_OficinasCollection, docCursos).then( (docRef) => {
-      alert("Item adicionado com sucesso")
+    try {
+      addDoc(MiniCursos_e_OficinasCollection, docCursos);
+      alert("Item adicionado com sucesso");
       navigate('/minicursos-oficinas')
-      
-    }).catch((erro) => {
-      console.log("erro: " + erro)
-    })
-
+    } catch (erro) {
+      console.log("erro: " + erro);
+    }
     
   };
 

@@ -96,15 +96,6 @@ const Editar = () => {
     const {minicurso_oficina} = location.state;
     const [formData, setFormData] = useState({...minicurso_oficina});
 
-    // const [name, setName] = useState('');
-    // const [description, setDescription] = useState('');
-    // const [date, setDate] = useState('');
-    // const [time, setTime] = useState('');
-    // const [duration, setDuration] = useState('');
-    // const [location, setLocation] = useState('');
-    // const [vacancies, setVacancies] = useState('');
-    // const [certificate, setCertificate] = useState('sim');
-
     const [modalVisible, setModalVisible] = useState(false);
 
   const handleChange = (e) => {
@@ -167,13 +158,25 @@ const Editar = () => {
                         <TextField
                             fullWidth
                             multiline
-                            rows={10}
+                            rows={7}
                             label="Descrição"
                             name='descricao'
                             value={formData.descricao}
                             onChange={handleChange}
                             variant='outlined'
                         />
+                        <Select
+                            name='aberto'
+                            value={formData.aberto}
+                            onChange={handleChange}
+                            variant="outlined"
+                            sx={{
+                                width: '100%',
+                              }}
+                        >
+                            <MenuItem value="true">Aberto</MenuItem>
+                            <MenuItem value="false">Encerrado</MenuItem>
+                        </Select>
                         <div className='container-botoes'>
                         <Button
                             type='submit'
@@ -276,6 +279,7 @@ const Editar = () => {
                             <MenuItem value="sim">Com certificado</MenuItem>
                             <MenuItem value="nao">Sem certificado</MenuItem>
                         </Select>
+                        
                      
                 </div>
               </form>
