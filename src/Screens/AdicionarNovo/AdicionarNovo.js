@@ -92,8 +92,6 @@ import {db} from '../../Firebase/config'
 const AdicionarNovo = () => {
   const navigate = useNavigate();
 
-  //const db = initializeFirestore(app, {experimentalForceLongPolling: true})
-
   const MiniCursos_e_OficinasCollection = collection(db, "minicursos_e_oficinas")
 
   const [name, setName] = useState('');
@@ -103,6 +101,7 @@ const AdicionarNovo = () => {
   const [duration, setDuration] = useState('');
   const [location, setLocation] = useState('');
   const [vacancies, setVacancies] = useState('');
+  const [inscription, setInscription] = useState('');
   const [certificate, setCertificate] = useState('sim');
 
   const handleNovo = () => {
@@ -116,17 +115,18 @@ const AdicionarNovo = () => {
       vagas: vacancies,
       certificado: certificate,
       aberto: true,
-      imagem: 'path_to_image'
+      inscricao: inscription,
     }
 
     addDoc(MiniCursos_e_OficinasCollection, docCursos).then( (docRef) => {
       alert("Item adicionado com sucesso")
+      navigate('/minicursos-oficinas')
       
     }).catch((erro) => {
       console.log("erro: " + erro)
     })
 
-    navigate('/minicursos-oficinas')
+    
   };
 
   return (
@@ -146,11 +146,18 @@ const AdicionarNovo = () => {
                         <TextField
                             fullWidth
                             multiline
-                            rows={10}
+                            rows={7}
                             label="Descrição"
                             value={description}
                             onChange={(event) => setDescription(event.target.value)}
                             variant='outlined'
+                        />
+                        <TextField
+                            fullWidth
+                            label="Formulário de inscrição"
+                            value={inscription}
+                            variant='outlined'
+                            onChange={(event) => setInscription(event.target.value)}
                         />
 
                         <Button type="submit"
@@ -211,6 +218,7 @@ const AdicionarNovo = () => {
                             variant='outlined'
                             onChange={(event) => setVacancies(event.target.value)}
                         />
+                        
                         <Select
                             value={certificate}
                             onChange={(event) => setCertificate(event.target.value)}
