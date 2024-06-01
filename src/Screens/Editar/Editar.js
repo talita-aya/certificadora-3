@@ -167,8 +167,8 @@ const Editar = () => {
                         />
                         <Select
                             name='aberto'
-                            value={formData.aberto}
-                            onChange={handleChange}
+                            value={formData.aberto ? 'true' : 'false'}
+                            onChange={(e) => handleChange({ target: { name: 'aberto', value: e.target.value === 'true' } })}
                             variant="outlined"
                             sx={{
                                 width: '100%',

@@ -114,7 +114,7 @@ const AdicionarNovo = () => {
       local: location,
       vagas: vacancies,
       certificado: certificate,
-      aberto: true,
+      aberto: true, //sempre será adicionado como true
       inscricao: inscription,
     }
 
