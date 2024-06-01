@@ -52,7 +52,7 @@ function CourseCard({ minicurso_oficina }) {
                     <p>{vagas} vagas</p>
                 </div>
                 <Button
-                onClick={() => console.log("botão inscrever")}
+                onClick={() => window.open(minicurso_oficina.inscricao, '_blank')}
                 sx={{ 
                     color: '#B1756D',
                     borderColor: '#B1756D',

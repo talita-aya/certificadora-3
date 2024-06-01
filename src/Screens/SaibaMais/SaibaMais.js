@@ -55,7 +55,7 @@ const SaibaMais = () => {
             <p>{courseInfo.descricao}</p>
 
             <Button
-              onClick={() => console.log("Botão inscrever")}
+              onClick={() => window.open(courseInfo.inscricao, '_blank')}
               variant="outlined"
               sx={[
                 {
