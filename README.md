@@ -4,7 +4,7 @@
 
 <br>
 
-Este projeto será composto pelo desenvolvimento de um sistema web com o objetivo de simplificar o agendamento e controle de minicursos e oficinas ofertados pelo projeto Meninas Digitais.
+Este projeto é composto pelo desenvolvimento de um sistema web com o objetivo de simplificar o agendamento e controle de minicursos e oficinas ofertados pelo projeto Meninas Digitais.
 
 <br>
 
@@ -18,13 +18,22 @@ Este projeto será composto pelo desenvolvimento de um sistema web com o objetiv
 
 <br>
 
+## 🔑 Credenciais para login
+
+Para acessar a área do administrador do sistema é necessário que o usuário realize seu login através da inserção de dados nos campos disponíveis: e-mail e senha. 
+Assim, segue abaixo as credenciais criadas para que seja testado essa funcionalidade:
+
+- E-mail: admin@meninasdigitais.com
+- Senha: 123456
+
+<br>
+
 ## 📑 Funcionalidades
 
-<b>❗ O back-end do projeto ainda não foi implementado, visto que esta entrega seria a finalização completa do front-end, deste modo, nenhuma informação está sendo salva no sistema atual, não é necessário credenciais para realizar login (basta clicar no botão 'Entrar') e não há nenhuma conexão, até então, com o banco de dados que será utilizado ❗</b> 
 
 1. Apresentação geral de todos os cards de minicursos e oficinas planejados, de modo que toda a comunidade interessada possa ter acesso;
 
-      > O público poderá se inscrever no minicurso/oficina que desejar através de um formulário externo ao clicar no botão 'Inscrever-se' (por enquanto este botão não possui nada linkado a ele).
+      > O público poderá se inscrever no minicurso/oficina que desejar através de um formulário externo ao clicar no botão 'Inscrever-se'.
 
 2. Tela Saiba Mais com detalhes do minicurso/oficina selecionado: descrição, data, hora, local, duração e certificação;
 
@@ -48,11 +57,14 @@ Juntamente, utilizou-se da biblioteca [Material UI](https://mui.com) na versão 
 
   
 
-Para a lógica do projeto será utilizado o BaaS (Backend As A Service) [Firebase](https://firebase.google.com/products-build?hl=pt), um modelo de serviço que oferece a infraestrutura e o back-end de uma aplicação de forma simplificada e que será implementado para a próxima entrega do projeto no dia 08 de junho de 2024.
+Para a lógica do projeto foi utilizado o BaaS (Backend As A Service) [Firebase](https://firebase.google.com/products-build?hl=pt) na versão 10.12.1, um modelo de serviço que oferece a infraestrutura e o back-end de uma aplicação de forma simplificada.
 
   
 
 Já o progresso do projeto foi acompanhado através de uma [Planilha Gantt](https://blog.runrun.it/planilha-de-gantt/#:~:text=O%20gr%C3%A1fico%20de%20gantt%20%C3%A9,a%20produtividade%20da%20sua%20%C3%A1rea.), contendo os status de todas as tarefas pendentes, os responsáveis, datas de início e fim, bem como estregas parciais e finais. Este cronograma completo pode ser visualizado através deste [link](https://docs.google.com/spreadsheets/d/1ch29nuDN0-2P2YCQSGXyLf8QUYjbYn0F/edit?usp=sharing&ouid=112152257061659035144&rtpof=true&sd=true).
+
+
+Por fim, todo o código foi escrito através da IDE (Integrated Development Environment, traduzido como Ambiente de Desenvolvimento Integrado) [Visual Studio Code](https://code.visualstudio.com) na versão 1.85.
 
   
 <br>

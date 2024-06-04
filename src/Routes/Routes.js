@@ -13,7 +13,6 @@ function App() {
   return (
     <UserAuthContextProvider>
       <Routes>
-      {/* 
         <Route
           path="/minicursos-oficinas"
           element={
@@ -38,13 +37,9 @@ function App() {
             </PrivateRoutes>
           }
         />
-        */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/saiba-mais" element={<SaibaMais />} />
-        <Route path="/minicursos-oficinas" element={<MinicursosOficinas />} />
-        <Route path="/adicionar" element={<AdicionarNovo />} />
-        <Route path="/editar" element={<Editar />} />
       </Routes>
     </UserAuthContextProvider>
   );
