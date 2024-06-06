@@ -115,7 +115,7 @@ const Editar = () => {
 
       updateDoc(docRef, formData);
       alert('Editado com sucesso')
-      navigate("/minicursos-oficinas")
+      navigate("/minicursos-oficinas", {replace: true})
     }catch (error) {
       console.error("Erro ao editar item: ", error);
     }
@@ -125,17 +125,15 @@ const Editar = () => {
   }
 
   const handleExcluir = () => {
-
+    
     try {
       const docRef = doc(db, 'minicursos_e_oficinas', formData.id);
       deleteDoc(docRef);
       alert('Item excluido')
-      navigate("/minicursos-oficinas")
+      navigate("/minicursos-oficinas", {replace: true});
     } catch (error) {
       console.error("Erro ao excluir item: ", error);
     }
-
-    
     
   }
 

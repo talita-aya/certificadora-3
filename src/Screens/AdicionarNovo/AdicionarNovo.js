@@ -121,7 +121,7 @@ const AdicionarNovo = () => {
     try {
       addDoc(MiniCursos_e_OficinasCollection, docCursos);
       alert("Item adicionado com sucesso");
-      navigate('/minicursos-oficinas')
+      navigate('/minicursos-oficinas', {replace: true})
     } catch (erro) {
       console.log("erro: " + erro);
     }
