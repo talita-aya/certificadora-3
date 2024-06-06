@@ -107,7 +107,7 @@ const Editar = () => {
   }
 
   const handleEditar = (e) => {
-    e.preventDefault();
+    e.preventDefault(); //evitar que o formulário recarregue a página por si só
 
     try {
       //referência ao documento no firestore
@@ -122,7 +122,7 @@ const Editar = () => {
 
     
     
-  };
+  }
 
   const handleExcluir = () => {
 
@@ -137,7 +137,7 @@ const Editar = () => {
 
     
     
-  };
+  }
 
   return (
     <ThemeProvider theme={theme}>

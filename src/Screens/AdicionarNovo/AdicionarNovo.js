@@ -92,7 +92,7 @@ import {db} from '../../Firebase/config'
 const AdicionarNovo = () => {
   const navigate = useNavigate();
 
-  const MiniCursos_e_OficinasCollection = collection(db, "minicursos_e_oficinas")
+  const MiniCursos_e_OficinasCollection = collection(db, "minicursos_e_oficinas") 
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
